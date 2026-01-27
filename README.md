@@ -1,58 +1,51 @@
-# DIO - Trilha .NET - API e Entity Framework
-www.dio.me
+# 🚀 Gerenciador de Tarefas API - Trilha .NET 8
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
+![.NET](https://img.shields.io/badge/.NET-8.0-512bd4)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?logo=microsoft-sql-server&logoColor=white)
+![EF Core](https://img.shields.io/badge/EF_Core-8.0-blue)
 
-## Contexto
-Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
+Este projeto foi desenvolvido como parte do desafio técnico da trilha .NET da DIO. Trata-se de uma API robusta para gerenciamento de tarefas, onde apliquei conceitos avançados de persistência de dados e arquitetura de software.
 
-Essa lista de tarefas precisa ter um CRUD, ou seja, deverá permitir a você obter os registros, criar, salvar e deletar esses registros.
+## 🌟 Diferenciais Técnicos
 
-A sua aplicação deverá ser do tipo Web API ou MVC, fique a vontade para implementar a solução que achar mais adequado.
+Diferente do projeto base, realizei melhorias estratégicas para alinhar o sistema aos padrões atuais do mercado:
 
-A sua classe principal, a classe de tarefa, deve ser a seguinte:
+* **Upgrade Tecnológico:** Projeto migrado de .NET 6 para **.NET 8.0 (LTS)**, visando melhor performance e suporte de longo prazo.
+* **Rigor de Tipagem:** Habilitado o `Nullable context` para prevenir erros de referência nula (NullReferenceException).
+* **Gestão de Dados:** Implementação de consultas LINQ avançadas para filtragem por múltiplos critérios (Título, Data e Status).
 
-![Diagrama da classe Tarefa](diagrama.png)
+## 🛠️ Tecnologias e Ferramentas
 
-Não se esqueça de gerar a sua migration para atualização no banco de dados.
+* **Backend:** C#, ASP.NET Core Web API
+* **Banco de Dados:** SQL Server
+* **ORM:** Entity Framework Core (EF Core)
+* **Documentação:** Swagger (OpenAPI)
+* **Controle de Versão:** Git / GitHub
 
-## Métodos esperados
-É esperado que você crie o seus métodos conforme a seguir:
+## 📖 Como Executar o Projeto
 
+1.  **Configuração de Ambiente:**
+    Ajuste a `Connection String` no arquivo `appsettings.json` para o seu servidor local.
+    > Certifique-se de incluir `TrustServerCertificate=True` se estiver em ambiente de desenvolvimento local.
 
-**Swagger**
+2.  **Persistência de Dados (Migrations):**
+    No terminal do VS Code, execute:
+    ```bash
+    dotnet ef database update
+    ```
 
+3.  **Iniciar a API:**
+    ```bash
+    dotnet run
+    ```
+    A API iniciará o servidor local. Você pode acessar a documentação interativa e testar os endpoints através da rota **Swagger**:
+    * `http://localhost:PORTA/swagger/index.html` 
+    
+    *(Substitua `PORTA` pela porta gerada automaticamente pelo .NET, geralmente informada no terminal após o comando `dotnet run`).*
 
-![Métodos Swagger](swagger.png)
+## ⚖️ Sobre o Autor
 
+**Cassiano Silverston**
+Advogado com OAB ativa e experiência em produtos jurídicos na **Thomson Reuters**, atualmente em transição de carreira para a **Engenharia de Software**. Minha missão é unir o rigor analítico e a organização de processos da área jurídica com a agilidade e inovação do desenvolvimento backend .NET.
 
-**Endpoints**
-
-
-| Verbo  | Endpoint                | Parâmetro | Body          |
-|--------|-------------------------|-----------|---------------|
-| GET    | /Tarefa/{id}            | id        | N/A           |
-| PUT    | /Tarefa/{id}            | id        | Schema Tarefa |
-| DELETE | /Tarefa/{id}            | id        | N/A           |
-| GET    | /Tarefa/ObterTodos      | N/A       | N/A           |
-| GET    | /Tarefa/ObterPorTitulo  | titulo    | N/A           |
-| GET    | /Tarefa/ObterPorData    | data      | N/A           |
-| GET    | /Tarefa/ObterPorStatus  | status    | N/A           |
-| POST   | /Tarefa                 | N/A       | Schema Tarefa |
-
-Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que exigirem
-
-```json
-{
-  "id": 0,
-  "titulo": "string",
-  "descricao": "string",
-  "data": "2022-06-08T01:31:07.056Z",
-  "status": "Pendente"
-}
-```
-
-
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+---
