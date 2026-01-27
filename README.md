@@ -34,11 +34,14 @@ Diferente do projeto base, realizei melhorias estratégicas para alinhar o siste
     dotnet ef database update
     ```
 
-3.  **Execução:**
+3.  **Iniciar a API:**
     ```bash
     dotnet run
     ```
-    Acesse o Swagger em: `http://localhost:5000/swagger/index.html`
+    A API iniciará o servidor local. Você pode acessar a documentação interativa e testar os endpoints através da rota **Swagger**:
+    * `http://localhost:PORTA/swagger/index.html` 
+    
+    *(Substitua `PORTA` pela porta gerada automaticamente pelo .NET, geralmente informada no terminal após o comando `dotnet run`).*
 
 ## ⚖️ Sobre o Autor
 
