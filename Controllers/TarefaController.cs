@@ -6,14 +6,9 @@ namespace TrilhaApiDesafio.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TarefaController : ControllerBase
+    public class TarefaController(OrganizadorContext context) : ControllerBase
     {
-        private readonly OrganizadorContext _context;
-
-        public TarefaController(OrganizadorContext context)
-        {
-            _context = context;
-        }
+        private readonly OrganizadorContext _context = context;
 
         [HttpGet("{id}")]
         public IActionResult ObterPorId(int id)
@@ -21,36 +16,36 @@ namespace TrilhaApiDesafio.Controllers
             var tarefa = _context.Tarefas.Find(id);
             if (tarefa == null)
                 return NotFound();
-            return Ok();
+            return Ok(tarefa);
         }
 
         [HttpGet("ObterTodos")]
         public IActionResult ObterTodos()
         {
             var tarefas = _context.Tarefas.ToList();
-            return Ok();
+            return Ok(tarefas);
         }
 
         [HttpGet("ObterPorTitulo")]
         public IActionResult ObterPorTitulo(string titulo)
         {
-            var tarefa = _context.Tarefas.Where(x => x.Titulo.Contains(titulo));
+            var tarefas = _context.Tarefas.Where(x => x.Titulo.Contains(titulo));
             
-            return Ok();
+            return Ok(tarefas);
         }
 
         [HttpGet("ObterPorData")]
         public IActionResult ObterPorData(DateTime data)
         {
-            var tarefa = _context.Tarefas.Where(x => x.Data.Date == data.Date);
-            return Ok(tarefa);
+            var tarefas = _context.Tarefas.Where(x => x.Data.Date == data.Date);
+            return Ok(tarefas);
         }
 
         [HttpGet("ObterPorStatus")]
         public IActionResult ObterPorStatus(EnumStatusTarefa status)
         {
-            var tarefa = _context.Tarefas.Where(x => x.Status == status);
-            return Ok(tarefa);
+            var tarefas = _context.Tarefas.Where(x => x.Status == status).ToList();
+            return Ok(tarefas);
         }
 
         [HttpPost]
